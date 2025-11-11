@@ -1,6 +1,8 @@
 import express from 'express';
+import http from 'http';
 import { config } from './config/appConfig.js';
 import routes from './routes/route.js';
+import { setupWebSocketServer } from './websockets/websocketServer.js'; // adjust path
 
 const app = express();
 
@@ -10,7 +12,13 @@ app.use(express.json());
 // Routes
 app.use('/', routes);
 
+// Create HTTP server manually (so Express + WebSocket can share it)
+const server = http.createServer(app);
+
+// Setup WebSocket server
+setupWebSocketServer(server);
+
 // Start server
-app.listen(config.port, () => {
+server.listen(config.port, () => {
   console.log(`✅ Server running on http://localhost:${config.port}`);
 });

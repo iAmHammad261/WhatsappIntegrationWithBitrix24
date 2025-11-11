@@ -1,6 +1,4 @@
-import { broadcast } from '../websocket/connections.js';
-
-
+import { broadcast } from '../websockets/connections.js';
 
 export default async function ProcessTheIncomingMessages(req, res) {
   try {
