@@ -1,6 +1,6 @@
 import { WebSocketServer } from 'ws';
 import { addConnection, removeConnection } from './connections.js';
-import { handleMessage } from './messageHandlers.js';
+import { handleMessage } from './messageHandler.js';
 
 export function setupWebSocketServer(server) {
   const wss = new WebSocketServer({ server });
