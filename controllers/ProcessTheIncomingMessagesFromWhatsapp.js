@@ -6,21 +6,26 @@ export default async function ProcessTheIncomingMessages(req, res) {
     console.log('Headers:', JSON.stringify(req.headers, null, 2));
     console.log('Method:', req.method);
     console.log('URL:', req.url);
+    console.log('Body:', JSON.stringify(req.body, null, 2));
 
-    console.log('--- Incoming Message Data ---');
-    console.log(JSON.stringify(req.body, null, 2));
+    // Check if text.body exists
+    const hasTextMessage = req.body?.entry?.some(entry =>
+      entry.changes?.some(change =>
+        change.value?.messages?.some(msg => msg.type === 'text' && msg.text?.body)
+      )
+    );
 
-    // Before broadcasting
-    console.log('Broadcasting message...');
-    broadcast({ type: 'NEW_MESSAGE', data: req.body });
-    console.log('Message broadcasted successfully');
+    if (hasTextMessage) {
+      console.log('Text message found, broadcasting...');
+      broadcast({ type: 'NEW_MESSAGE', data: req.body });
+      console.log('Message broadcasted successfully');
+    } else {
+      console.log('No text message found, skipping broadcast');
+    }
 
-    // Sending response
-    console.log('Sending response: 200 OK');
     res.status(200).send('Message received');
   } catch (error) {
     console.error('Error processing message:', error);
-    console.log('Sending response: 500 Internal Server Error');
     res.status(500).send('Internal Server Error');
   }
 }
