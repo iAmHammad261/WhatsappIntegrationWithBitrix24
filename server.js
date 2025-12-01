@@ -9,11 +9,10 @@ import cors from 'cors';
 const app = express();
 
 app.use(cors({
-    origin: [
-        'https://pcicrm.bitrix24.com', // Your Bitrix URL (no trailing slash)
-        'https://pcicrm.bitrix24.com/'  // Just in case browsers send it with slash
-    ],
-    credentials: true // specialized setting often needed for auth headers
+  origin: ['https://pcicrm.bitrix24.com'],
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
 }));
 
 await connectDB();
