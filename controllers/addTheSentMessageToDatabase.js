@@ -4,7 +4,7 @@ import { addSentMessage } from '../database/addSentMessage.js';
  * Controller to handle sending a message.
  * Expected Request Body: { "phoneNumber": "+1234567890", "text": "Hello World" }
  */
-export default sendMessageController = async (req, res) => {
+export default async (req, res) => {
     try {
         // 1. Extract data from the incoming request body
         const { phoneNumber, text } = req.body;
