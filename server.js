@@ -4,8 +4,17 @@ import { config } from './config/appConfig.js';
 import routes from './routes/route.js';
 import { setupWebSocketServer } from './websockets/websocketServer.js'; // adjust path
 import { connectDB } from './database/connectDB.js';
+import cors from 'cors';
 
 const app = express();
+
+app.use(cors({
+    origin: [
+        'https://pcicrm.bitrix24.com', // Your Bitrix URL (no trailing slash)
+        'https://pcicrm.bitrix24.com/'  // Just in case browsers send it with slash
+    ],
+    credentials: true // specialized setting often needed for auth headers
+}));
 
 await connectDB();
 
