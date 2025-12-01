@@ -1,5 +1,5 @@
 // Import the Message model (assuming it's in a file like 'messageModel.js')
-import { Message } from './messageModel.js'; 
+import { Message } from './MessageModel.js'; 
 
 /**
  * Saves a message SENT from your system.
