@@ -3,8 +3,11 @@ import http from 'http';
 import { config } from './config/appConfig.js';
 import routes from './routes/route.js';
 import { setupWebSocketServer } from './websockets/websocketServer.js'; // adjust path
+import { connectDB } from './database/connectDB.js';
 
 const app = express();
+
+await connectDB();
 
 // Middleware
 app.use(express.json());
