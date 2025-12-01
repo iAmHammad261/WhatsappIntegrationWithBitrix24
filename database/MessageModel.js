@@ -1,5 +1,8 @@
 // --- 3. DEFINE THE SCHEMA ---
 // This is the "blueprint" for the data we agreed to save.
+
+import mongoose from 'mongoose';
+
 const messageSchema = new mongoose.Schema({
   phoneNumber: String,
   text: String,
