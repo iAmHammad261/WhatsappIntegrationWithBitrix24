@@ -1,4 +1,4 @@
-import { Message } from './messageModel.js'; 
+import { Message } from './MessageModel.js'; 
 
 /**
  * Saves a message RECEIVED by your system.
