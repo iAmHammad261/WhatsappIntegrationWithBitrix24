@@ -1,6 +1,6 @@
 import { broadcast } from '../websockets/connections.js';
 // 👇 Ensure this path matches where you saved the database helper
-import { addReceivedMessage } from '../database/addReceivedMessage.js'; 
+import { addReceivedMessage } from '../database/addRecievedMessage.js'; 
 
 export default async function ProcessTheIncomingMessages(req, res) {
   try {
