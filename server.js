@@ -9,7 +9,11 @@ import cors from 'cors';
 const app = express();
 
 app.use(cors({
-  origin: ['https://pcicrm.bitrix24.com'],
+  origin: [
+    'https://pcicrm.bitrix24.com',                 // Your Bitrix CRM
+    'https://bitrixintegrationwithwhatsapp.pcirealestate.site', // <-- ADD THIS! (The site hosting your app)
+    'https://bitrixintegrationwithwhatsapp.pcirealestate.site/' // Add with slash too, just to be safe
+  ],
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
