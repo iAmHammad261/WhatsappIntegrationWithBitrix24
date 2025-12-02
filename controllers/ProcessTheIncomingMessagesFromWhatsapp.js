@@ -34,7 +34,9 @@ export default async function ProcessTheIncomingMessages(req, res) {
       const phoneNumber = message.from;     // "923135801665"
       const textBody = message.text.body;   // "Hello"
 
-      if(checkContactHistoryExists(phoneNumber)){
+      const historyExists = await checkContactHistoryExists(phoneNumber);
+
+      if(historyExists){
         console.log("History exists for this number.");
       }
       else{
