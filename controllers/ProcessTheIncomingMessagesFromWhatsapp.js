@@ -1,7 +1,7 @@
 import { broadcast } from '../websockets/connections.js';
 // 👇 Ensure this path matches where you saved the database helper
 import { addReceivedMessage } from '../database/addRecievedMessage.js'; 
-import {checkIfHistoryExists} from '../database/checkIfHistoryExists.js';
+import { checkContactHistoryExists } from '../database/checkIfHistoryExists.js';
 export default async function ProcessTheIncomingMessages(req, res) {
   try {
     console.log('--- Incoming Request ---');
@@ -22,7 +22,7 @@ export default async function ProcessTheIncomingMessages(req, res) {
       const phoneNumber = message.from;     // "923135801665"
       const textBody = message.text.body;   // "Hello"
 
-      if(checkIfHistoryExists(phoneNumber)){
+      if(checkContactHistoryExists(phoneNumber)){
         console.log("History exists for this number.");
       }
 
