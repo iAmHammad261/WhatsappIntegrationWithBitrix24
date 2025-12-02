@@ -5,7 +5,9 @@ import { addReceivedMessage } from '../database/addRecievedMessage.js';
 export default async function ProcessTheIncomingMessages(req, res) {
   try {
     console.log('--- Incoming Request ---');
-    console.log('Method:', req.method);
+    // console.log('Method:', req.method);
+
+    console.log('Body:', JSON.stringify(req.body, null, 2));
     
     // 1. Extract the specific message details needed for the Database
     // Based on your payload: entry -> changes -> value -> messages
