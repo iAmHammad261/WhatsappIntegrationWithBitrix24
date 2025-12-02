@@ -2,6 +2,7 @@ import { broadcast } from '../websockets/connections.js';
 // 👇 Ensure this path matches where you saved the database helper
 import { addReceivedMessage } from '../database/addRecievedMessage.js'; 
 import { checkContactHistoryExists } from '../database/checkIfHistoryExists.js';
+import { createNewLead } from '../bitrixServices/createNewLead.js';
 export default async function ProcessTheIncomingMessages(req, res) {
   try {
     console.log('--- Incoming Request ---');
@@ -15,6 +16,17 @@ export default async function ProcessTheIncomingMessages(req, res) {
     const changes = entry?.changes?.[0];
     const value = changes?.value;
     const message = value?.messages?.[0];
+    // 1. Access the 'contacts' array
+    const contacts = value?.contacts; 
+
+    // 2. Access the first contact object (the sender)
+    const senderContact = contacts?.[0];
+
+    // 3. Access the 'profile' object within the contact
+    const profile = senderContact?.profile;
+
+    // 4. Access the 'name' property
+    const senderName = profile?.name;
 
     // 2. Check if valid text message exists
     if (message && message.type === 'text' && message.text?.body) {
@@ -24,6 +36,9 @@ export default async function ProcessTheIncomingMessages(req, res) {
 
       if(checkContactHistoryExists(phoneNumber)){
         console.log("History exists for this number.");
+      }
+      else{
+        createNewLead(senderName,phoneNumber);
       }
 
       console.log('Text message found, broadcasting...');
