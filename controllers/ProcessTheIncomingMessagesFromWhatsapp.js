@@ -28,6 +28,7 @@ export default async function ProcessTheIncomingMessages(req, res) {
     // 4. Access the 'name' property
     const senderName = profile?.name;
 
+
     // 2. Check if valid text message exists
     if (message && message.type === 'text' && message.text?.body) {
       
@@ -40,7 +41,7 @@ export default async function ProcessTheIncomingMessages(req, res) {
         console.log("History exists for this number.");
       }
       else{
-        createNewLead(senderName,phoneNumber);
+        createNewLead({leadname: senderName, leadPhone: phoneNumber});
       }
 
       console.log('Text message found, broadcasting...');
