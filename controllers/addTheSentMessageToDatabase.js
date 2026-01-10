@@ -9,6 +9,8 @@ export default async (req, res) => {
         // 1. Extract data from the incoming request body
         const { phoneNumber, text } = req.body;
 
+        console.log("Received message data:", { phoneNumber, text });
+
         // 2. Basic Validation: Ensure data exists before trying to save
         if (!phoneNumber || !text) {
             return res.status(400).json({ 
