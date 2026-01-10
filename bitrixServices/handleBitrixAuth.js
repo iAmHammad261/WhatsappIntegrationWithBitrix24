@@ -7,7 +7,7 @@ import { B24OAuth } from '@bitrix24/b24jssdk';
 // --- Configuration ---
 
 // Path where the OAuth tokens are stored
-const TOKEN_FILE = path.join('/mnt/data/whatsappmessages', 'b24_tokens.json');
+const TOKEN_FILE = path.join('/mnt/whatsappdata/whatsappmessages', 'b24_tokens.json');
 const PORT = process.env.PORT || 3000;
 
 // Singleton instance for B24OAuth client
