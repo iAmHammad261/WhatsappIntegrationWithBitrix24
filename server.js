@@ -20,7 +20,7 @@ app.use(cors({
     'https://pcicrm.bitrix24.com',                                 // Bitrix CRM
     'https://bitrixintegrationwithwhatsapp.pcirealestate.site',    // Your App Site
     'https://bitrixintegrationwithwhatsapp.pcirealestate.site/', 
-    'https://whatsappintegrationwithbitrix24frontend.premierchoiceint.online/',  // Trailing slash
+    'https://whatsappintegrationwithbitrix24frontend.premierchoiceint.online',  // Trailing slash
     'http://localhost:3000'                                        // Local Dev
   ],
   methods: ['GET', 'POST', 'OPTIONS'],
